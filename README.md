@@ -23,4 +23,4 @@ El proyecto es una aplicación de planificación de dietas personalizada que per
 - Usuario básico y prime, con diferentes niveles de acceso y funcionalidad.
 - Perfil de administración para gestionar y controlar la información y el contenido de la aplicación.
 
-Para que la aplicación funcione correctamente se han de introducir als claves especificadas en el .env.
+Para que la aplicación funcione correctamente se han de introducir las claves especificadas en el .env, las cuales han sido eliminadas del repositorio por seguridad.
