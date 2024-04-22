@@ -1,0 +1,79 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_URL") // uses connection pooling
+  // directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id            String      @id @default(uuid())
+  email         String      @unique
+  fullName      String
+  image         String?
+  prime         Boolean     @default(true)
+  survey        Boolean     @default(false)
+  weight        Float?      // U
+  height        Float?      // U
+  age           Int?        // U
+  activity      Activity?   // U
+  exclude       String?     // U  
+  sex           String?     // U
+
+  meal_plans      MealPlan[] 
+}
+
+model MealPlan {
+  id          Int    @id @default(autoincrement())
+  name        String     // U
+  goal        Goal
+
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  
+  meals        Meal[]
+}
+
+model Meal {
+  id      Int   @id @default(autoincrement())
+  day     Int   // 0 to 6 (mon-sun)
+  type    Int   // 0 to 3 (brk, lunch, dinner)
+  
+  recipe  Recipe @relation(fields: [recipeId], references: [id])
+  recipeId Int
+
+  mealPlan MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  mealPlanId Int
+}
+
+model Recipe {
+  id            Int      @id @default(autoincrement())
+  title         String   @unique
+  image         String?
+  summary       String
+  instructions  String
+  calories      Int?
+  fat           Int?
+  carbohydrates   Int?
+  protein         Int?
+  ingredients     String[]
+
+  meals         Meal[]
+}
+
+enum Activity {
+  LIGHT
+  MODERATE
+  HIGH
+  EXTREME
+}
+
+enum Goal {
+  LOSE
+  MANTAIN
+  GAIN
+}

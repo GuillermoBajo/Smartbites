@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  nextjs:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    networks:
+      - frontend
+      - backend
+
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    depends_on:
+      - nextjs
+    networks:
+      - frontend
+      
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_PASSWORD: smartbites
+      POSTGRES_USER: smartbites
+      POSTGRES_DB: smartbites
+    networks:
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: smartbitesisinf@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: i6k£ZJ5931
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    networks:
+      - backend
+
+
+volumes:
+  db-data:
+  pgadmin-data:
+
+networks:
+  frontend:
+  backend:
