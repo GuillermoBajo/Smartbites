@@ -1,26 +1,26 @@
 # Smartbites
 
-El proyecto es una aplicación de planificación de dietas personalizada que permite a los usuarios establecer objetivos de salud y nutrición, definir preferencias dietéticas e ingresar datos personales para crear planes de comidas adaptados a sus necesidades. Los usuarios pueden acceder a funcionalidades como registro, autenticación segura, creación de planes de comidas personalizados, recetario, y visualización de estadísticas alimenticias.
+The project is a personalized diet planning application that allows users to set health and nutrition goals, define dietary preferences, and input personal data to create meal plans tailored to their needs. Users can access features such as registration, secure authentication, personalized meal plan creation, recipe book, and food statistics visualization.
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-- **Next.js** para frontend y backend, un marco que facilita el desarrollo unificado de ambas áreas.
-- **PostgreSQL** como sistema de gestión de bases de datos.
-- **Docker** y **Docker Compose** para la gestión y despliegue de la aplicación.
-- **Nginx** como servidor web y proxy inverso.
-- **Prisma** como ORM para la interacción con bases de datos.
-- **Google Auth** para autenticación segura de usuarios.
+- **Next.js** for frontend and backend, a framework that facilitates unified development of both areas.
+- **PostgreSQL** as the database management system.
+- **Docker** and **Docker Compose** for managing and deploying the application.
+- **Nginx** as a web server and reverse proxy.
+- **Prisma** as an ORM for interacting with databases.
+- **Google Auth** for secure user authentication.
 
-## Funcionalidades Clave
+## Key Features
 
-- Registro de usuarios y autenticación segura.
-- Creación de planes de comidas personalizados basados en datos personales y preferencias dietéticas.
-- Recetario para explorar recetas y buscar platos específicos.
-- Visualización de estadísticas alimenticias para un seguimiento detallado de la dieta.
+- User registration and secure authentication.
+- Creation of personalized meal plans based on personal data and dietary preferences.
+- Recipe book to explore recipes and search for specific dishes.
+- Food statistics visualization for detailed diet tracking.
 
-## Perfiles de Usuario
+## User Profiles
 
-- Usuario básico y prime, con diferentes niveles de acceso y funcionalidad.
-- Perfil de administración para gestionar y controlar la información y el contenido de la aplicación.
+- Basic and prime users, with different levels of access and functionality.
+- Admin profile to manage and control the application’s information and content.
 
-Para que la aplicación funcione correctamente se han de introducir las claves especificadas en el .env, las cuales han sido eliminadas del repositorio por seguridad.
+To ensure the application works correctly, the specified keys must be entered in the .env file, which has been removed from the repository for security purposes.
